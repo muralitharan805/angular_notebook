@@ -16,7 +16,12 @@ public emeloyees:any;
 
 
   ngOnInit(): void {
-    this.emeloyees = this._empService.getemployee();
+     this._empService.getemployee()
+    
+      .subscribe(
+
+        data=>this.emeloyees =data
+      );
   }
 
 }

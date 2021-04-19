@@ -14,7 +14,8 @@ export class EmployeeDetailsComponent implements OnInit {
   constructor(private employeeService:EmployeeService) { }
 
   ngOnInit(): void {
-    this.emeloyees = this.employeeService.getemployee();
+     this.employeeService.getemployee()
+    .subscribe(data=>this.emeloyees=data);
 
   }
 
