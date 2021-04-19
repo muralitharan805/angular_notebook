@@ -1,0 +1,40 @@
+<p>test1 works!</p>
+
+<h1>this is ngif examples</h1>
+<h1> ngif basic</h1>
+
+<h2 *ngIf="false">Hello </h2>
+
+
+<h1> 1 ngif property binding</h1>
+
+<h2 *ngIf="display">Hello </h2>
+
+<h1> 2 ng-template</h1>
+
+<h2 *ngIf="display; else elseblock" >Murali</h2>
+
+<ng-template #elseblock>
+    <h2> 
+        name is hidden
+    </h2>
+
+</ng-template>
+
+<h2>3 then and else block example</h2>
+<div *ngIf="display;then thenblock ;else  elseblock2" >Murali</div>
+
+<ng-template #thenblock>
+    <h2> 
+        murali thenblock 
+    </h2>
+
+</ng-template>
+
+
+<ng-template #elseblock2>
+    <h2> 
+        name is hidden elseblock2
+    </h2>
+
+</ng-template>
