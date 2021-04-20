@@ -1,0 +1,28 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+
+.container{
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 700px;
+}
+
+
+.box{
+  display: flex;
+  flex-direction: column;
+   justify-content: center;
+
+  width: 300px;
+  height: 300px;
+}
+
+
+.example-container .mat-form-field + .mat-form-field {
+    /* margin-left: 8px; */
+  }
+
+ 
