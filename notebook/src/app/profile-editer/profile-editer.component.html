@@ -1,0 +1,89 @@
+<form [formGroup]="profileForm" (ngSubmit)='onSubmit()' #formDir="ngForm" >
+
+    <div [hidden]="formDir.submitted">
+
+
+    <label>
+        Name:
+        <input type="text" id="name" formControlName="name" required>
+      </label><br> 
+      
+
+      <div *ngIf="name.invalid&&(name.dirty||name.touched)" >
+
+        <div *ngIf="name.errors.required">
+            Name is required.
+        </div>
+
+
+      </div>
+       
+      
+      <br>
+      <label>
+        phone_number:
+        <input type="number" formControlName="phone_number">
+      </label>
+      <br>
+
+      <label>
+        email:
+        <input type="email" formControlName="email">
+      </label>
+      <br>
+
+      <label>
+        password:
+        <input type="password" formControlName="password">
+      </label>
+      <br>
+
+      <div formGroupName="address">
+        <h3>Address</h3>
+      
+        <label>
+          Street:
+          <input type="text" formControlName="street">
+        </label>
+        <br>
+      
+        <label>
+          City:
+          <input type="text" formControlName="city">
+        </label>
+      <br>
+        
+        <label>
+          State:
+          <input type="text" formControlName="state">
+        </label>
+        <br>
+      
+        <label>
+          Zip Code:
+          <input type="text" formControlName="zip">
+        </label>
+      </div>
+      <br>
+
+      <button type="submit" [disabled]='profileForm.invalid' >Submit</button>
+      <button type="button" class="btn btn-default"
+      (click)="formDir.resetForm({})">Reset</button>
+    </div>
+
+
+</form>
+
+
+<div class="submitted-message" *ngIf="formDir.submitted">
+    <p>You've submitted your hero, {{ profileForm.value.name }}!</p>
+    <button (click)="formDir.resetForm({})">Add new profileForm</button>
+  </div>
+
+
+<p>
+    Form Status: {{ profileForm.value | json}}
+  </p>
+<p>
+    Form Status: {{ profileForm.status }}
+  </p>

@@ -1,0 +1,10 @@
+<p>test1 works!</p>
+
+<label for="Name">Name </label>
+<input type="text" [formControl]="favoriteColorControl" >
+
+
+<button (click)="updateName()" >clicke</button>
+<p>
+    Value: {{ favoriteColorControl.value }}
+  </p>
