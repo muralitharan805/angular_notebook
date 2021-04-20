@@ -14,10 +14,14 @@
 .box{
   display: flex;
   flex-direction: column;
-   justify-content: center;
+  justify-content: center;
 
   width: 300px;
   min-height: 300px;
+}
+
+.divbox{
+  
 }
 
 .example-tel-input-container {
