@@ -6,7 +6,13 @@
     <input matInput formControlName="name" >
   </mat-form-field>
   <!--  -->
-  <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+  <!-- <mat-error *ngIf="name.invalid"></mat-error> -->
+
+  <div *ngIf="name.invalid && (name.dirty || name.touched)" >
+    <h1 *ngIf="name.errors.required" >Name is required</h1>
+    <h1 *ngIf="name.errors.minlength" >Name is minLength</h1>
+
+  </div>
 
   <mat-form-field appearance="fill">
     <mat-label>password</mat-label>
@@ -34,9 +40,11 @@
 
   <button [disabled]='!registrationForm.valid' >Submit</button>
 
+  
+  <p>value :{{registrationForm.value | json}} </p>
+  <p>name.errors.minlength  {{name.errors.minlength | json}} </p>
+  <p>name.errors.required {{name.errors.required|json}} </p>
 </form>
-
-<p>value :{{registrationForm.value | json}} </p>
 <!-- Copyright 2020 Google LLC. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
     can be found in the LICENSE file at http://angular.io/license -->

@@ -10,9 +10,7 @@ export class Test1Component implements OnInit {
 
   registrationForm:any;
 
-  get username(){
-    return this.registrationForm.get('name')
-  }
+  
   // registrationForm=new FormGroup({
   //   name:new FormControl('',Validators.required),
   //   password:new FormControl('',Validators.required),
@@ -42,16 +40,15 @@ export class Test1Component implements OnInit {
       postalcode:['']
     })
   })
+
+  
+  }
+
+  get name(){
+    return this.registrationForm.get('name')
   }
 
 
-  getErrorMessage() {
-    if (this.registrationForm.get('name').hasError('minLength')) {
-      return 'You must enter a value';
-    }
-
-    return this.registrationForm.get('name') ? 'Not a valid email' : '';
-  }
 }
 
 
