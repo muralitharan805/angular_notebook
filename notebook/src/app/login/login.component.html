@@ -1,28 +1,31 @@
 <div class="container">
-  <form  [formGroup]="login" #formdata="ngForm" [hidden]="formdata.submitted" >
+  <form  [formGroup]="login" #formdata="ngForm" [hidden]="formdata.submitted"  (ngSubmit)='onSubmit()' >
     <mat-card class="box mat-elevation-z8">
       <mat-form-field appearance="fill">
         <mat-label>Enter your email</mat-label>
         <input matInput placeholder="pat@example.com"  formControlName="email" required>
-        <mat-error *ngIf="email.invalid">{{emailErrorMessage()}}</mat-error>
+        <mat-error *ngIf="email.invalid">{{emailErrorMessage()}}</mat-error><br>
       </mat-form-field>
 
 
       <mat-form-field appearance="fill">
         <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" >
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+      <button  type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
+      <mat-error *ngIf="password.invalid">{{passwordErrorMessage()}}</mat-error><br>
+
       </mat-form-field>
 
-      <button mat-raised-button color="primary" [disabled]='!login.valid' >Log in</button><br>
+      <button mat-raised-button color="primary" [disabled]='!login.valid' (ngSubmit)='onSubmit()' >Log in</button><br>
       <button mat-raised-button color="primary" routerLink="/register" >   
           Register
         </button>
-
     </mat-card> 
   </form>
+  <mat-spinner *ngIf="spinner" ></mat-spinner>
+
     <div  class="box" *ngIf="formdata.submitted">
       <p>Log in Successfully</p>
       <button mat-raised-button color="primary" (click)="formdata.resetForm({})">Sign Out</button>

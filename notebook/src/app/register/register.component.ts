@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { conform_password_vlt } from '../sharded/conform_password_vlt';
+import { UserDataService } from '../user-data.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
 
    email_rgex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     password_regx=/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$/;
-  constructor(private _fb:FormBuilder) { }
+  constructor(private _fb:FormBuilder,private userDataService:UserDataService) { }
 
   ngOnInit(): void {
 
@@ -34,33 +35,11 @@ export class RegisterComponent implements OnInit {
     
     // })
   }
-
-  _keyUp(e: any) {let input;
-    if (e.metaKey || e.ctrlKey) {
-      return true;
-    }
-    if (e.which === 32) {
-     return false;
-    }
-    if (e.which === 0) {
-     return true;
-    }
-    if (e.which < 33) {
-      return true;
-    }
-    input = String.fromCharCode(e.which);
-    return !!/[\d\s]/.test(input);
-
-
-}
-
-
-
   onSubmit(){
 
     this.register.value;
     console.log(this.register.value);
-    
+    this.userDataService.addData(this.register.value)
   }
 
   get name(){
