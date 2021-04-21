@@ -1,0 +1,42 @@
+
+<form action="" [formGroup]="registrationForm" (ngSubmit)="onSubmit" >
+
+  <mat-form-field appearance="fill">
+    <mat-label>name</mat-label>
+    <input matInput formControlName="name" >
+  </mat-form-field>
+  <!--  -->
+  <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+
+  <mat-form-field appearance="fill">
+    <mat-label>password</mat-label>
+    <input matInput formControlName="password" >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>conform_password</mat-label>
+    <input matInput formControlName="conform_password" >
+  </mat-form-field>
+
+  <div formGroupName="address" >
+    <mat-form-field appearance="fill">
+      <mat-label>city</mat-label>
+      <input matInput formControlName="city" >
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>state</mat-label>
+      <input matInput formControlName="state" >
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>postalcode</mat-label>
+      <input matInput formControlName="postalcode" >
+    </mat-form-field>
+  </div>
+
+  <button [disabled]='!registrationForm.valid' >Submit</button>
+
+</form>
+
+<p>value :{{registrationForm.value | json}} </p>
+<!-- Copyright 2020 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
