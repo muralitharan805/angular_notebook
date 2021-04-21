@@ -11,15 +11,16 @@ export class RegisterComponent implements OnInit {
   hide = true;
   register:any;
 
-  
+   email_rgex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
   constructor(private _fb:FormBuilder) { }
 
   ngOnInit(): void {
 
     this.register= this._fb.group({
-      name : ['',[Validators.required]],
-      email : ['',[Validators.required]],
-      phone : ['',[Validators.required]],
+      name:['',[Validators.required,Validators.minLength(3)]],
+      email : ['',[Validators.required,Validators.pattern(this.email_rgex)]],
+      phone : ['',[Validators.required,Validators.pattern("[5-9]{1}[0-9]{9}"),Validators.minLength(10)]],
       password : ['',[Validators.required]],
       conform_password : ['',[Validators.required]],
 
@@ -40,6 +41,14 @@ export class RegisterComponent implements OnInit {
 
   get name(){
     return this.register.get('name');
+  }
+
+  get phone(){
+    return this.register.get('phone');
+  }
+
+  get email(){
+    return this.register.get('email')
   }
 
 }

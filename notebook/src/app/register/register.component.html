@@ -1,33 +1,32 @@
 <div class="container">
       <form [hidden]='formdata.submitted' [formGroup]='register' (ngSubmit)='onSubmit()' #formdata="ngForm" >
-        <div class="test" class="box"  >
+    <mat-card class="box mat-elevation-z8">
+
 
           <mat-form-field appearance="fill">
             <mat-label>name</mat-label>
-            <input matInput formControlName="name" >
+            <input matInput placeholder="Enter your Name" formControlName="name" required>
           </mat-form-field>
-        <div *ngIf="name.invalid && (name.dirty || name.touched)" >
-          <mat-error *ngIf="name.errors.required">Name is required</mat-error>
-          <mat-error *ngIf="name.errors.minlength">Name required minimum 3 length</mat-error>
-          <!-- <h1 *ngIf="name.errors.required" >Name is required</h1> -->
-          <!-- <h1 *ngIf="name.errors.minlength" >Name is minLength</h1> -->
-          
-        </div>
-        <p>name.errors.required | {{name.errors.required|json}} </p>
-        <p>name.invalid | {{name.invalid|json}} </p>
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" >
+              <mat-error *ngIf="name.errors.required">Name is required</mat-error>
+              <mat-error *ngIf="name.errors.minlength">Name required minimum 3 length</mat-error>
+            </div>
         <mat-form-field appearance="fill">
             <mat-label>Phone number</mat-label>
-            <input matInput placeholder="Enter your name" formControlName="phone" required>
-
+            <input matInput placeholder="Enter your Phone number" formControlName="phone" maxlength="10" required>
         </mat-form-field>
-
+        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" >
+          <mat-error *ngIf="phone.errors.required">phone Number  is required</mat-error>
+          <mat-error *ngIf="phone.errors.pattern">Enter Valid Phone number</mat-error>
+        </div>
         <mat-form-field appearance="fill">
           <mat-label>Enter your email</mat-label>
           <input matInput placeholder="pat@example.com" formControlName="email" required>
-          <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
         </mat-form-field>
-
-
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" >
+          <mat-error *ngIf="register.hasError('required',['email'])">Email id is required</mat-error>
+            <mat-error *ngIf="register.hasError('pattern',['email'])">Enter valid email id</mat-error>
+        </div>
         <mat-form-field appearance="fill">
           <mat-label>Enter your password</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
@@ -46,15 +45,14 @@
 
 
 
-        <button mat-raised-button color="primary" [disabled]='!register.valid' >Sign Up</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]='!register.valid' >Sign Up</button>
         <br>
-        <button mat-raised-button color="secondary" (click)="formdata.resetForm({})" >Reset</button>
-      </div>
-
+        <button type="reset" mat-stroked-button color="primary" (click)="formdata.resetForm({})" >Reset</button>
+    </mat-card>
       </form>
       <div class="box" *ngIf="formdata.submitted" >
         <p>Registered Successfully, {{ formdata.value.name }}!</p>
-        <button mat-raised-button color="primary"  (click)="formdata.resetForm({})">Try Log in</button>
+        <button mat-raised-button color="primary"  (click)="formdata.resetForm({})" routerLink="/login" >Log in</button>
       </div>
     
 </div>

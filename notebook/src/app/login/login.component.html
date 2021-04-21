@@ -1,31 +1,32 @@
 <div class="container">
-
+  <form  [formGroup]="login" #formdata="ngForm" [hidden]="formdata.submitted" >
     <mat-card class="box mat-elevation-z8">
       <mat-form-field appearance="fill">
         <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="pat@example.com" [formControl]="email" required>
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        <input matInput placeholder="pat@example.com"  formControlName="email" required>
+        <mat-error *ngIf="email.invalid">{{emailErrorMessage()}}</mat-error>
       </mat-form-field>
 
 
       <mat-form-field appearance="fill">
         <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'">
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" >
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" [disabled]='!email.valid' >Log in</button><br>
-      <button mat-raised-button color="primary"  >   
-        <a class="button" routerLink="/register">
-          Register</a> |
-
-
+      <button mat-raised-button color="primary" [disabled]='!login.valid' >Log in</button><br>
+      <button mat-raised-button color="primary" routerLink="/register" >   
+          Register
         </button>
 
     </mat-card> 
-    
+  </form>
+    <div  class="box" *ngIf="formdata.submitted">
+      <p>Log in Successfully</p>
+      <button mat-raised-button color="primary" (click)="formdata.resetForm({})">Sign Out</button>
+    </div>
 </div>
 
     
