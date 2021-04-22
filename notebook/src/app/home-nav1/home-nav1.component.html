@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <span>My App</span>
+  <span class="example-spacer"></span>
+  <nav mat-tab-nav-bar bak backgroundColor='primary' *ngIf="!found">
+    <a mat-tab-link *ngFor="let link of links" 
+    (click)="activeLink = link"
+    [active]="activeLink == link"
+    > {{link}} </a>
+    <!-- <a mat-tab-link > Contact </a>
+    <a mat-tab-link > Login </a> -->
+   </nav>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" *ngIf="found" >
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
