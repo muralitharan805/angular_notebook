@@ -1,0 +1,73 @@
+<div class="container">
+      <form [hidden]='formdata.submitted' [formGroup]='register' (ngSubmit)='onSubmit()' #formdata="ngForm" >
+    <mat-card class="box mat-elevation-z8">
+
+
+          <mat-form-field appearance="fill">
+            <mat-label>name</mat-label>
+            <input matInput placeholder="Enter your Name" formControlName="name" required>
+          </mat-form-field>
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" >
+              <mat-error *ngIf="name.errors.required">Name is required</mat-error>
+              <mat-error *ngIf="name.errors.minlength">Name required minimum 3 length</mat-error><br>
+            </div>
+        <mat-form-field appearance="fill">
+            <mat-label>Phone number</mat-label>
+            <input type="text" matInput numbersOnly placeholder="Enter your Phone number" formControlName="phone" maxlength="10" required>
+        </mat-form-field>
+        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" >
+          <mat-error *ngIf="phone.errors.required">phone Number  is required</mat-error>
+          <mat-error *ngIf="phone.errors.pattern">Enter Valid Phone number</mat-error><br>
+        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" formControlName="email" required>
+        </mat-form-field>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" >
+          <mat-error *ngIf="register.hasError('required',['email'])">Email id is required</mat-error>
+            <mat-error *ngIf="register.hasError('pattern',['email'])">Enter valid email id</mat-error><br>
+        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide"  [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" >
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        </mat-form-field>
+
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" >
+          <mat-error *ngIf="password.errors.required">Password is required</mat-error>
+          
+          <mat-error *ngIf="password.errors.pattern">Should contain at least a capital letter,number, special character and And minimum 8 chaaracter length </mat-error><br>
+        </div>
+
+
+        <mat-form-field appearance="fill">
+          <mat-label>Conform password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="conform_password">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        </mat-form-field>
+
+        
+        <div *ngIf="register.errors?.identityRevealed && (register.touched || register.dirty)" class="cross-validation-error-message alert alert-danger">
+          <mat-error>password not match</mat-error>
+        </div>
+          
+        <button type="submit" mat-raised-button color="primary"  [disabled]='!register.valid' >Sign Up</button>
+        <br>
+        <button type="reset" mat-stroked-button color="primary" (click)="formdata.resetForm({})" >Reset</button>
+    </mat-card>
+      </form>
+      <div class="box" *ngIf="formdata.submitted" >
+        <p>Registered Successfully, {{ formdata.value.name }}!</p>
+        <button mat-raised-button color="primary"  (click)="formdata.resetForm({})" routerLink="/login" >Log in</button>
+      </div>
+    
+</div>
+
+    
+    
+    
+    
