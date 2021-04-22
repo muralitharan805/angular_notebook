@@ -52,24 +52,29 @@ export class LoginComponent implements OnInit {
   get password(){
     return this.login.get("password");
   }
-
+  getEmail:any;
+  getpassword:any;
   onSubmit(){
 
     this.spinner=!this.spinner;
 
-    if(this.userDataService.findUser(this.login.value['password'])){
-    this.spinner=false;
-
+    this.getEmail=this.userDataService.findUser(this.login.value['email'])
+    console.log('getemail array',this.getEmail);
+    console.log('this.getEmail.length',this.getEmail.length);
+  
+    this.getpassword=this.login.value['password']
+    console.log('getpassword',this.getpassword);
+    console.log('this.getEmail[0].password',this.getEmail[0].password);
+    
+    if(this.getEmail.length===0){
+      alert('email not fount')
     }else{
-    this.spinner=false;
-
+      if(this.getEmail[0].password == this.getpassword){
+        alert('signed successfully')
+      }else{
+        alert('wrong password')
+      }
     }
-    
-    // // if(this.login.value['password']===this.userDataService.findUser(this.login.value['email']))
-    // console.log('this.login.value',this.login.value);
-    
-
-    // console.log('userDataService',this.userDataService.findUser(this.login.value['password']));
 
   }
 }

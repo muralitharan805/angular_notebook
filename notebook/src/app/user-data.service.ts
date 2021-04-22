@@ -16,13 +16,11 @@ export class UserDataService {
 
   findUser(email:any){
 
-    console.log('validate', this.loginData.filter(function(item:any) {
-      return item.email === email;
-    }));
+  
 
-    return this.loginData.map(function(item:any) {
-      return item.password === email;
-    });  
+  return this.loginData.filter(function(item:any) {
+      return item.email === email;
+  });  
   
     
     
