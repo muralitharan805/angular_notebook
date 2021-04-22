@@ -21,30 +21,19 @@ export class LoginComponent implements OnInit {
   //   return this.email.hasError('email') ? 'Not a valid email' : '';
   // }
 
-  constructor(private _fb:FormBuilder,private userDataService:UserDataService) { }
-
-  ngOnInit(): void {
+  constructor(private _fb:FormBuilder,private userDataService:UserDataService) {
 
     this.login= this._fb.group({
       email : ['',[Validators.required,Validators.pattern(this.email_rgex)]],
       password : ['',[Validators.required]],
     })
+   }
+
+  ngOnInit(): void {
+
+   
   }
 
-  emailErrorMessage(){
-    if(this.login.hasError('required',['email'])){
-      return 'Email id is required'; 
-    }
-
-    return this.login.hasError('pattern'),['email']? 'Not a valid email' : '';
-    
-
-  }
-
-  passwordErrorMessage(){
-    return this.login.hasError('required'),['password']? 'Password id is required' : '';
-
-  }
 
   get email(){
     return this.login.get('email');
@@ -52,29 +41,64 @@ export class LoginComponent implements OnInit {
   get password(){
     return this.login.get("password");
   }
+
+
   getEmail:any;
   getpassword:any;
+  store:any;
+  emaild:any="murali@gmail.com"
+  passwordd:any="Murali@123"
+  hide_form = false
+
+  enable(){
+  this.hide_form = false
+  this.login.reset()
+
+  }
   onSubmit(){
 
-    this.spinner=!this.spinner;
 
-    this.getEmail=this.userDataService.findUser(this.login.value['email'])
-    console.log('getemail array',this.getEmail);
-    console.log('this.getEmail.length',this.getEmail.length);
-  
-    this.getpassword=this.login.value['password']
-    console.log('getpassword',this.getpassword);
-    console.log('this.getEmail[0].password',this.getEmail[0].password);
-    
-    if(this.getEmail.length===0){
-      alert('email not fount')
-    }else{
-      if(this.getEmail[0].password == this.getpassword){
-        alert('signed successfully')
-      }else{
-        alert('wrong password')
-      }
-    }
+    // if(this.passwordd==this.login.value['password']){
+    // this.hide_form = true;
 
+    //   console.log('yes');
+    //   console.log('form data',this.login.value);
+    //   this.login.reset()
+
+      
+    // }else{
+    //   console.log('No');
+    //   // this.login.reset()
+    // //  this.login.get('email')?.setErrors({ invalid1: 'Invalid Email id' });
+    //  this.login.get('password')?.setErrors({ password_invalid: 'Invalid password_invalid' });
+
+
+    // }
+
+
+
+   this.getEmail=this.userDataService.findUser(this.login.value['email'])
+   this.getpassword=this.login.value['password']
+   
+   if(this.getEmail.length===0){
+     this.login.get('email')?.setErrors({ invalid1: 'Invalid Email id' });
+    //  alert('email not fount')
+
+   }else{
+     if(this.getEmail[0].password == this.getpassword){
+      this.hide_form = true;
+      console.log('yes');
+      console.log('form data',this.login.value);
+      this.login.reset()
+      //  alert('signed successfully')
+     }else{
+     this.login.get('password')?.setErrors({ password_invalid: 'Invalid password_invalid' });
+
+     }
+   }
+
+
+
+   
   }
 }
