@@ -1,2 +1,45 @@
-<p>testing page</p>
-<button mat-button color="primary">Primary</button>
+<mat-toolbar class="mat-toolbar-div-container" >
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+   <mat-icon>menu</mat-icon>
+ </button>
+ <span>My App</span>
+ <span class="example-spacer"></span>
+ <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+   <mat-icon>favorite</mat-icon>
+ </button>
+ <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  <mat-icon>share</mat-icon>
+</button>
+</mat-toolbar>
+<mat-sidenav-container class="mat_drawer_container_div">
+  <mat-sidenav mode="side" class="mat_drawer_div" opened>
+    
+    <div class="nav-menu">
+
+      <mat-selection-list #shoes [multiple]="false">
+        <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">
+          {{shoe}}
+        </mat-list-option>
+      </mat-selection-list>
+
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content >
+    <div class="sidenav-content-div">
+      
+      Main content
+    </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+<footer>
+
+  <div class="footer-div">
+    
+    <p>copy rights 2021</p>
+  </div>
+
+</footer>
+<!-- <div class="container">
+
+</div> -->

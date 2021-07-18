@@ -1,0 +1,66 @@
+.mat-toolbar-div-container{
+  border: 2px solid green;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+/* 
+.container{
+  border: 2px solid red;
+  height: 1600px;
+} */
+.mat_drawer_container_div{
+  border: 2px solid red;
+  height: auto !important;
+  min-height: 100%;
+
+}
+
+.mat_drawer_div{
+  border: 2px solid red;
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  min-width: 260px;
+}
+
+.nav-menu{
+  display: block;
+  margin: 0 2px;
+  max-width: 268px;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.menu-button{
+  /* border: none; */
+  /* background-color: transparent; */
+  /* margin: 0; */
+  width: 100%;
+  /* overflow: hidden; */
+}
+.sidenav-content-div{
+  border: 2px solid blue;
+  display: block;
+  min-height: 100vh;
+  padding: 80px 3rem 2rem;
+  max-width: 50em;
+  margin: 0 auto;
+}
+
+footer{
+  margin: 2px;
+  border: 2px solid rgb(211, 20, 116);
+  height: 250px;
+}
+
+.footer-div{
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  margin: 0 auto 40px;
+}
