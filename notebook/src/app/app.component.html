@@ -1,5 +1,5 @@
 <mat-toolbar class="mat-toolbar-div-container" >
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button (click)="open_close()"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
    <mat-icon>menu</mat-icon>
  </button>
  <span>My App</span>
@@ -11,8 +11,11 @@
   <mat-icon>share</mat-icon>
 </button>
 </mat-toolbar>
-<mat-sidenav-container class="mat_drawer_container_div">
-  <mat-sidenav mode="side" class="mat_drawer_div" opened>
+<mat-sidenav-container  class="mat_drawer_container_div">
+  <mat-sidenav  
+  [mode]="(isHandset$ | async) ? 'over' : 'side'"
+
+  #rightSidenav class="mat_drawer_div" [opened]="(isHandset$|async)===false">
     
     <div class="nav-menu">
 
@@ -28,6 +31,7 @@
     <div class="sidenav-content-div">
       
       Main content
+
     </div>
   </mat-sidenav-content>
 

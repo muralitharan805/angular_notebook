@@ -55,7 +55,7 @@
 footer{
   margin: 2px;
   border: 2px solid rgb(211, 20, 116);
-  height: 250px;
+  /* height: 250px; */
 }
 
 .footer-div{
