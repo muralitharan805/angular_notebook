@@ -1,0 +1,5 @@
+$border_size:3px;
+
+@mixin flex_spacer() {
+  flex: 1 1 auto;
+}
