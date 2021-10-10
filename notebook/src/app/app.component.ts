@@ -43,12 +43,7 @@ export class AppComponent implements OnChanges,OnInit,DoCheck,AfterContentInit,A
     console.log('ngDoCheck ');
     
   }
-  ngAfterContentInit(): void {
-    //Called after ngOnInit when the component's or directive's content has been initialized.
-    //Add 'implements AfterContentInit' to the class.
-    console.log('ngAfterContentInit ');
-    
-  }
+
   ngAfterContentChecked(): void {
     //Called after every check of the component's or directive's content.
     //Add 'implements AfterContentChecked' to the class.
@@ -73,6 +68,13 @@ export class AppComponent implements OnChanges,OnInit,DoCheck,AfterContentInit,A
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
     console.log('ngOnDestroy ');
+    
+  }
+
+  ngAfterContentInit(): void {
+    //Called after ngOnInit when the component's or directive's content has been initialized.
+    //Add 'implements AfterContentInit' to the class.
+    console.log('ngAfterContentInit ');
     
   }
   
