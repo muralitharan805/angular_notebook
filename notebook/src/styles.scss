@@ -59,3 +59,16 @@ $dark-theme:   mat-dark-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.check mat-button-toggle button{
+  width: 250px;
+  height: 250px;
+}
+
+.mat-button-toggle-checked{
+  @include mat-elevation-transition;
+  @include mat-elevation(10,#e91e63, 0.8);
+  // opacity:
+  // @include mat-elevation(2, #e91e63, 0.8);
+}

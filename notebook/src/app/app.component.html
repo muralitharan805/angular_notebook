@@ -1,1 +1,49 @@
 <p>This is initial setup material custome and dark theme with scss</p>
+
+
+<h1>Aagnia EEP <br>
+
+    Welcome Murali</h1>
+<form [formGroup]="Create_entity" >
+    <mat-horizontal-stepper linear [formGroup]="Create_entity" labelPosition="bottom" >
+        <mat-step  [stepControl]="Create_entity" >
+            <ng-template matStepLabel>Choose Company Name</ng-template>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="company_name" required>
+            </mat-form-field>
+
+
+            <div>
+                <button mat-button matStepperPrevious type="button">Back</button>
+                <button mat-button matStepperNext type="button">Next</button>
+            </div>
+
+        </mat-step>
+        <mat-step [stepControl]="Create_entity" >
+            <ng-template matStepLabel>Select Company type</ng-template>
+            <mat-button-toggle-group formControlName="org_type"  class="check" name="fontStyle" aria-label="Font Style"  >
+                <mat-button-toggle  [value]="item.id" *ngFor="let item of temp_org" >{{item.name}}</mat-button-toggle>
+            </mat-button-toggle-group>
+            <div>
+                <button mat-button matStepperPrevious type="button">Back</button>
+                <button mat-button matStepperNext type="button">Next</button>
+            </div>
+        </mat-step>
+        <mat-step [stepControl]="Create_entity" >
+            <ng-template matStepLabel>Select Company Module</ng-template>
+
+            <mat-button-toggle-group formControlName="modules" multiple  class="check" name="fontStyle" aria-label="Font Style"  >
+                <mat-button-toggle  [value]="item.id" *ngFor="let item of temp_modules" >{{item.name}}</mat-button-toggle>
+            </mat-button-toggle-group>
+
+
+            <div>
+                <button mat-button matStepperPrevious type="button">Back</button>
+                <button mat-button matStepperNext type="button">Next</button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</form>
+
+<h1>Value : {{ Create_entity.value | json }}</h1>
