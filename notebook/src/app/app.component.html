@@ -1,1 +1,23 @@
-<p>This is initial setup material custome and dark theme with scss</p>
+<input type="file" name="" id="" (change)="file_upload($event)" multiple  >
+
+<div  class="d-flex">
+    <ng-container *ngFor="let url of urls; let i = index" >
+        <div *ngIf="url.object=='images'" class="d-flex flex-column">
+            <div class="upload-img" >
+                <img [src]="url.url"> <br/>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" class="close-image" (click)="close(i)" >cancel</mat-icon>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<div *ngIf="othercontent" class="d-flex">
+    <div>
+        <ng-container *ngFor="let url of urls;let i = index" >
+            <div class="d-flex bd-highlight border" *ngIf="url.object=='others'">
+                <div class="">{{url.file.name}}</div>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" class="flex-shrink-1 " (click)="close(i)">cancel</mat-icon>
+            </div>
+        </ng-container>
+    </div>
+</div>
