@@ -21,10 +21,12 @@ export class AppComponent {
   othercontent = false
   file_upload(event: any) {
     for (var i = 0; i < event.target.files.length; i++) {
+      console.log("File object ",event.target.files[i]);
       if (event.target.files[i].type == "image/png" || event.target.files[i].type == "image/jpeg" || event.target.files[i].type == "image/jpg") {
         var reader = new FileReader();
         reader.readAsDataURL(event.target.files[i]);
         var temp = event.target.files[i]
+        
         reader.onload = (reder_event) => {
 
           this.urls.push({
