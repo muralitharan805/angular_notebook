@@ -1,1 +1,120 @@
 <p>This is initial setup material custome and dark theme with scss</p>
+
+<h1>Form For Single Ui</h1>
+
+<label for="name">Name: </label>
+<input id="name" type="text" [formControl]="name" />
+<button (click)="updateName()">Update Name</button>
+
+<p>Value: {{ name.value }}</p>
+
+<h1>Form Group Instance</h1>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <label for="first-name">First Name: </label>
+  <input id="first-name" type="text" formControlName="firstName" />
+
+  <label for="last-name">Last Name: </label>
+  <input id="last-name" type="text" formControlName="lastName" />
+</form>
+
+<p>Complete the form to enable button.</p>
+<button type="submit" [disabled]="!profileForm.valid">Submit</button>
+
+<h1>Creating Nested Form Group</h1>
+
+<form [formGroup]="profileForm_nestedform" (ngSubmit)="onSubmit()">
+  <label for="first-name">First Name: </label>
+  <input id="first-name" type="text" formControlName="firstName" />
+
+  <label for="last-name">Last Name: </label>
+  <input id="last-name" type="text" formControlName="lastName" />
+  <div formGroupName="address">
+    <h2>Address</h2>
+
+    <label for="street">Street: </label>
+    <input id="street" type="text" formControlName="street" />
+
+    <label for="city">City: </label>
+    <input id="city" type="text" formControlName="city" />
+
+    <label for="state">State: </label>
+    <input id="state" type="text" formControlName="state" />
+
+    <label for="zip">Zip Code: </label>
+    <input id="zip" type="text" formControlName="zip" />
+  </div>
+</form>
+
+<p>Complete the form to enable button.</p>
+<button type="submit" [disabled]="!profileForm.valid">Submit</button>
+<button (click)="updateProfile()">Update Profile</button>
+
+<h1>Creating Nested Form with Formbuilder</h1>
+
+<form [formGroup]="profileForm_formbuilder" (ngSubmit)="onSubmit()">
+  <label for="first-name">First Name: </label>
+  <input id="first-name" type="text" formControlName="firstName" />
+
+  <label for="last-name">Last Name: </label>
+  <input id="last-name" type="text" formControlName="lastName" />
+  <div formGroupName="address">
+    <h2>Address</h2>
+
+    <label for="street">Street: </label>
+    <input id="street" type="text" formControlName="street" />
+
+    <label for="city">City: </label>
+    <input id="city" type="text" formControlName="city" />
+
+    <label for="state">State: </label>
+    <input id="state" type="text" formControlName="state" />
+
+    <label for="zip">Zip Code: </label>
+    <input id="zip" type="text" formControlName="zip" />
+  </div>
+</form>
+
+<p>Complete the form to enable button.</p>
+<button type="submit" [disabled]="!profileForm_formbuilder.valid">
+  Submit
+</button>
+<button (click)="updateProfile()">Update Profile</button>
+
+<h1>Creating Nested Form with Form Array</h1>
+
+<form [formGroup]="profileForm_formArray" (ngSubmit)="onSubmit()">
+  <label for="first-name">First Name: </label>
+  <input id="first-name" type="text" formControlName="firstName" />
+
+  <label for="last-name">Last Name: </label>
+  <input id="last-name" type="text" formControlName="lastName" />
+  <div formGroupName="address">
+    <h2>Address</h2>
+
+    <label for="street">Street: </label>
+    <input id="street" type="text" formControlName="street" />
+
+    <label for="city">City: </label>
+    <input id="city" type="text" formControlName="city" />
+
+    <label for="state">State: </label>
+    <input id="state" type="text" formControlName="state" />
+
+    <label for="zip">Zip Code: </label>
+    <input id="zip" type="text" formControlName="zip" />
+  </div>
+  <div formArrayName="aliases">
+    <h2>Aliases</h2>
+    <button (click)="addAlias()" type="button">+ Add another alias</button>
+
+    <div *ngFor="let alias of aliases.controls; let i = index">
+      <!-- The repeated alias template -->
+      <label for="alias-{{ i }}">Alias:</label>
+      <input id="alias-{{ i }}" type="text" [formControlName]="i" />
+    </div>
+  </div>
+</form>
+
+<p>Complete the form to enable button.</p>
+<button type="submit" [disabled]="!profileForm_formArray.valid">Submit</button>
