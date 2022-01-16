@@ -66,9 +66,3 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
-.unicorn-dark-theme {
-  @include angular-material-color($dark-theme);
-  // background-color: red;
-  @include mat-button-color($dark-theme);
-}
