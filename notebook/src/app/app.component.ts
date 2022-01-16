@@ -16,6 +16,6 @@ export class AppComponent {
       .getContainerElement()
       .classList.add('unicorn-dark-theme');
 
-    // this.isAlternateMode=!this.isAlternateMode
+    this.isAlternateMode = !this.isAlternateMode;
   }
 }
