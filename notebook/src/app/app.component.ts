@@ -1,4 +1,5 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { HttpClient } from '@angular/common/http';
 import {
   AfterContentChecked,
   AfterContentInit,
@@ -10,7 +11,12 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-
+import { Config } from 'protractor';
+import { Observable, throwError } from 'rxjs';
+import { catchError, finalize, map, retry, tap } from 'rxjs/operators';
+import { AppserviceService } from './appservice.service';
+import { API_END_POINTS } from './shared/Constant';
+import { LoaderService } from './shared/loader.service';
 export interface tab_type {
   key: string;
   value: string;
@@ -31,12 +37,58 @@ export class AppComponent
 {
   title = 'notebook';
   isAlternateMode = false;
+  EmpDetails$!: Observable<any>;
+  StuDetails$!: Observable<any>;
+
   constructor(
     public overlayContainer: OverlayContainer,
-    private cdref: ChangeDetectorRef
+    private cdref: ChangeDetectorRef,
+    private http: HttpClient,
+    public appService: AppserviceService,
+    public loaderservice: LoaderService
   ) {}
   ngDoCheck(): void {}
-  ngOnInit(): void {}
+  temp: any;
+  errorObject: any;
+
+  ngOnInit(): void {
+    // this.EmpDetails$ = this.http
+    //   .get<any>('http://localhost:3000/employees')
+    //   .pipe(
+    //     catchError((err) => {
+    //       console.log('error caught in service');
+    //       console.error(err);
+    //       // this.EmpDetails$ = err;
+    //       this.errorObject = err;
+    //       return throwError(err.statusText);
+    //     })
+    //   );
+    // this.StuDetails$ = this.http.get<any>('http://localhost:3000/student');
+    // this.loaderservice.loadingOn();
+
+    this.StuDetails$ = this.appService
+      .invokeService(
+        API_END_POINTS.student_get.method,
+        API_END_POINTS.student_get.path
+      )
+      .pipe(
+        catchError((ele) => {
+          console.error(ele);
+          return ele;
+        })
+      );
+
+    this.EmpDetails$ = this.appService
+      .invokeService(API_END_POINTS.emp_get.method, API_END_POINTS.emp_get.path)
+      .pipe(
+        catchError((err) => {
+          console.log(err);
+          this.errorObject = err;
+          return throwError(err);
+        })
+      );
+    console.log('ng onint *********');
+  }
   ngAfterViewChecked(): void {}
   ngAfterContentChecked(): void {}
   ngAfterContentInit(): void {}

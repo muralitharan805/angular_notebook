@@ -1,29 +1,23 @@
 <p>This is initial setup material custome and dark theme with scss</p>
-
-<mat-tab-group
-  [selectedIndex]="selectedIndex"
-  (selectedIndexChange)="selectedIndexChange($event)"
-  (selectedTabChange)="selectedTabChange($event)"
->
-  <mat-tab *ngFor="let item of items; let i = index">
-    <ng-template mat-tab-label>
-      {{ item.key }}
-      <button
-        mat-icon-button
-        [style.display]="i == 0 ? 'none' : ''"
-        (click)="closeTab(item)"
-      >
-        <mat-icon>close</mat-icon>
-      </button>
-    </ng-template>
-    {{ item.value }}
-  </mat-tab>
-
-  <mat-tab disabled>
-    <ng-template mat-tab-label>
-      <button mat-icon-button (click)="addnewtab()">
-        <mat-icon>add_circle</mat-icon>
-      </button>
-    </ng-template>
-  </mat-tab>
-</mat-tab-group>
+<app-loder></app-loder>
+<div>
+  <h1>Emp data</h1>
+  <ng-container *ngIf="EmpDetails$ | async as data; else loadingOrError">
+    <!-- code here -->
+    <p>{{ EmpDetails$ | async | json }}</p>
+  </ng-container>
+  <ng-template #loadingOrError>
+    <app-show-err [errObj]="errorObject"></app-show-err>
+  </ng-template>
+</div>
+<br />
+<div>
+  <h1>Student data</h1>
+  <ng-container *ngIf="StuDetails$ | async as data; else loadingOrError">
+    <!-- code here -->
+    <p>{{ StuDetails$ | async | json }}</p>
+  </ng-container>
+  <ng-template #loadingOrError>
+    <app-show-err [errObj]="errorObject"></app-show-err>
+  </ng-template>
+</div>
