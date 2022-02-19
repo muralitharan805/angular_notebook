@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="d-flex justify-content-md-center align-items-center vh-100">
+        <div class="login">
+          <p>Login</p>
+          <form (ngSubmit)="onSubmit()" [formGroup]="login">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="User Name"
+              aria-label="default input example"
+              id="M-uname"
+              formControlName="username"
+            />
+            <input
+              class="form-control"
+              type="password"
+              placeholder="Password"
+              aria-label="default input example"
+              id="M-password"
+              formControlName="password"
+            />
+            <button
+              type="submit"
+              class="btn btn-primary mt-2"
+              [disabled]="!login.valid"
+            >
+              Login
+            </button>
+            <p>{{ login.value | json }}</p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex justify-content-md-center align-items-center vh-100">
+        <div class="register">
+          <p>Register</p>
+          <input
+            class="form-control"
+            type="text"
+            placeholder=" Name"
+            aria-label="default input example"
+          />
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Email"
+            aria-label="default input example"
+          />
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Phone Number"
+            aria-label="default input example"
+          />
+          <input
+            class="form-control"
+            type="password"
+            placeholder="Password"
+            aria-label="default input example"
+          />
+          <button type="button" class="btn btn-primary mt-2">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

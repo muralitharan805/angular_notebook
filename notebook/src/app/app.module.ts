@@ -9,6 +9,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptorService, NoopInterceptor } from './http-interceptor';
 import { LoggingIntercepter } from './logging-interceptor';
 import { SharedModule } from './shared/shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,9 +18,11 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     DemomaterialModule,
     HttpClientModule,
     SharedModule,
+    NgbModule,
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true },
