@@ -4,6 +4,7 @@ import { LoderComponent } from './loder/loder.component';
 import { DemomaterialModule } from '../demomaterial/demomaterial.module';
 import { ShowErrComponent } from './show-err/show-err.component';
 import { HeaderComponent } from './header/header.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [LoderComponent, ShowErrComponent, HeaderComponent],
