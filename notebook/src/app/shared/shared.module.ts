@@ -7,10 +7,24 @@ import { HeaderComponent } from './header/header.component';
 import { AuthGuard } from './auth.guard';
 import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { SideNavHeaderComponent } from './side-nav-header/side-nav-header.component';
 
 @NgModule({
-  declarations: [LoderComponent, ShowErrComponent, HeaderComponent],
+  declarations: [
+    LoderComponent,
+    ShowErrComponent,
+    HeaderComponent,
+    SideNavComponent,
+    SideNavHeaderComponent,
+  ],
   imports: [CommonModule, DemomaterialModule, RouterModule],
-  exports: [LoderComponent, ShowErrComponent, HeaderComponent, RouterModule],
+  exports: [
+    LoderComponent,
+    ShowErrComponent,
+    HeaderComponent,
+    RouterModule,
+    SideNavComponent,
+  ],
 })
 export class SharedModule {}
