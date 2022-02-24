@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { EventEmitter } from 'stream';
 import { headerMenu } from '../utlis/type';
 
 @Component({
@@ -11,8 +10,7 @@ import { headerMenu } from '../utlis/type';
 export class HeaderComponent implements OnInit {
   @Input()
   headerMenu?: headerMenu[];
-  @Output()
-  Iscollapse = new EventEmitter();
+
   iscollapse = false;
   constructor(private router: Router) {}
 
@@ -25,6 +23,5 @@ export class HeaderComponent implements OnInit {
 
   Iscollapse_emit() {
     this.iscollapse = !this.iscollapse;
-    this.Iscollapse.emit(String(this.iscollapse));
   }
 }
