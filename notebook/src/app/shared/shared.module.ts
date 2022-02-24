@@ -8,6 +8,10 @@ import { AuthGuard } from './auth.guard';
 import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
 import { SideNavComponent } from './side-nav/side-nav.component';
+<<<<<<< HEAD
+=======
+import { SideNavHeaderComponent } from './side-nav-header/side-nav-header.component';
+>>>>>>> a08d3983850fd7b76f493e8dd23c8c4510676394
 
 @NgModule({
   declarations: [
